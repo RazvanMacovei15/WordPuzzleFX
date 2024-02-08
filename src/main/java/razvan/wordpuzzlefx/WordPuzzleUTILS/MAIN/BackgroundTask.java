@@ -102,7 +102,6 @@ public class BackgroundTask extends MyPathfinder {
                 }
             }
         }
-
         MyCircle start = path.getFirst();
         double radius = start.getCircleNode().getRadius();
         int number = (int) (radius*2/3);
@@ -138,6 +137,5 @@ public class BackgroundTask extends MyPathfinder {
                 e.printStackTrace();
             }
         }
-
     }
 }
