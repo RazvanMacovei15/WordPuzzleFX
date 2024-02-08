@@ -11,6 +11,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -41,11 +43,10 @@ public class Controller {
     private File file = null;
     private Map<String, String> dictionaryPaths=null;
 
-    public void resetCircleColors(BorderPane canvasBorderPane){
-        for (Node node : canvasBorderPane.getChildren()) {
-            if (node instanceof Circle circle) {
-                circle.setFill(Color.GREY);
-            }
+
+    public void resetCircleColors(Map<String, MyCircle> map){
+        for (Map.Entry<String, MyCircle> entry : map.entrySet()) {
+            entry.getValue().getCircleNode().setFill(Color.GREY);
         }
     }
 
@@ -53,13 +54,12 @@ public class Controller {
         if (dictionary == null) {
             System.out.println("please generate a dictionary!");
         } else {
-            resetCircleColors(canvasBorderPane);
-            Map<String, MyCircle> circles = dictionary.getMyCirclesMap();
-            BackgroundTask backgroundTask = new BackgroundTask(canvasBorderPane,canvas.getGraphicsContext2D());
-            String start = textField1.getText().trim();
-            String end = textField2.getText().trim();
-
             new Thread (() -> {
+                Map<String, MyCircle> circles = dictionary.getMyCirclesMap();
+                resetCircleColors(circles);
+                BackgroundTask backgroundTask = new BackgroundTask(canvasBorderPane,canvas.getGraphicsContext2D());
+                String start = textField1.getText().trim();
+                String end = textField2.getText().trim();
                 backgroundTask.findShortestPath(myGraph, circles.get(start), circles.get(end), canvasBorderPane);
             }).start();
 
@@ -80,6 +80,15 @@ public class Controller {
 
         canvasBorderPane.setMinWidth(700);
         canvasBorderPane.setMinHeight(700);
+        // Create a BackgroundFill with the desired background color
+        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, null, null);
+
+        // Create a Background with the BackgroundFill
+        Background background = new Background(backgroundFill);
+
+        // Set the Background to the BorderPane
+        canvasBorderPane.setBackground(background);
+
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -118,10 +127,6 @@ public class Controller {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
-
-            myGraph = new MyGraph(dictionary.getWordsGroupedByWildcard2());
 
             myGraph = myGraphBuilder.buildGraphFromWordsDictionaryCircles(dictionary, canvas);
 

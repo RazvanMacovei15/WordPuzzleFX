@@ -51,9 +51,13 @@ public abstract class MyPathfinder {
             //if the node is the end node, return the path
             if (node.equals(end)) {
 
-                highlightPath(paths.get(node), canvasBorderPane);
-
                 System.out.println("found path " + paths.get(node));
+
+                for(MyCircle myCircle: paths.get(node)){
+                    System.out.print(myCircle.getWord() + "+");
+                }
+
+                highlightPath(paths.get(node), canvasBorderPane);
 
                 return paths.get(node);
             }

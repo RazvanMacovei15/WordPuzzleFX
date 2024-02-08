@@ -107,25 +107,15 @@ public class BackgroundTask extends MyPathfinder {
 
     @Override
     protected void highlightPath(List<MyCircle> path, BorderPane canvasBorderPane) {
-        new Thread(() -> {
-            for (MyCircle myCircle : path) {
-                ObservableList<Node> list = canvasBorderPane.getChildren();
-                for (Node node : list) {
-                    if (node instanceof Circle circle) {
-                        if (circle.getUserData().equals(myCircle.getWord())) {
-                            circle.setFill(Color.GREEN);
-                            circle.setOnMouseClicked(event -> {
-                                System.out.println("clicked on " + circle.getUserData());
-                            });
-                        }
-                    }
-                }
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+        for (MyCircle myCircle : path) {
+            myCircle.getCircleNode().setFill(Color.GREEN);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }).start();
+        }
+
     }
 }

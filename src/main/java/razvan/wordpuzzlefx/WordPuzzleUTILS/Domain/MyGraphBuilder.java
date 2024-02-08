@@ -22,6 +22,14 @@ public class MyGraphBuilder {
         this.canvasBorderPane = canvasBorderPane;
     }
 
+    public MyGraph getMyGraph() {
+        return myGraph;
+    }
+
+    public void setMyGraph(MyGraph myGraph) {
+        this.myGraph = myGraph;
+    }
+
     public MyGraph buildGraphFromWordsDictionaryCircles(WordsDictionary wordsDictionary, Canvas canvas) {
         //get MyCircleMAP
         Map<String, MyCircle> myCircleMap = wordsDictionary.getMyCirclesMap();
@@ -32,33 +40,10 @@ public class MyGraphBuilder {
         Map<MyCircle, List<MyCircle>> nodesByWildcardCopy = new HashMap<>(nodesByWildcard);
         Collection<List<MyCircle>> wildcardValues = nodesByWildcardCopy.values();
 
-        //get the parameters for the gridPane
-        List<String> words = wordsDictionary.getWords();
-        int size = words.size();
+        List<MyCircle> myCircles = wordsDictionary.getMyCircles();
 
-        List<Double> parameters = Utils.makeGridPaneMatrix(wordsDictionary.getWords().size(), canvasBorderPane);
-        double rows = parameters.get(0);
-        double circleX = parameters.get(1);
-        double circleY = parameters.get(2);
-        double squareSize = parameters.get(3);
-        int nrOfCircles = 0;
-        int index = 0;
-        double radius = parameters.get(4);
+        Utils.organiseGraphInConcentricCircles(myCircles, canvasBorderPane);
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < rows && nrOfCircles < size; j++) {
-                String word = words.get(index);
-                MyCircle circle = myCircleMap.get(word);
-                drawMyCircle(circleX, circleY, circle, radius);
-                index++;
-                circleX += squareSize;
-                nrOfCircles++;
-                System.out.print("o ");
-            }
-            System.out.println();
-            circleX = parameters.get(1);
-            circleY += squareSize;
-        }
         for (List<MyCircle> neighbouringWords : wildcardValues) {
             for (MyCircle word : neighbouringWords) {
                 myGraph.addNode(word);
@@ -84,7 +69,7 @@ public class MyGraphBuilder {
     }
 
     private void drawEdgeBetweenTwoPoints(double Ax, double Ay, double Bx, double By, GraphicsContext gc) {
-        gc.setStroke(Color.RED);
+        gc.setStroke(Color.DARKGRAY);
         gc.setLineWidth(1);
         gc.strokeLine(Ax, Ay, Bx, By);
     }

@@ -11,9 +11,12 @@ public class WordsDictionary {
     private final List<String> words;
     private Map<String, MyCircle> myCirclesMap;
 
+    private List<MyCircle> myCircles;
+
     public WordsDictionary(String dictionaryPath) throws IOException{
         this.words = Files.readAllLines(Paths.get(dictionaryPath));
         this.myCirclesMap = new HashMap<>();
+        this.myCircles = new ArrayList<>();
     }
 
     public Map<String, MyCircle> getMyCirclesMap() {
@@ -50,6 +53,7 @@ public class WordsDictionary {
         for (String word : words) {
             MyCircle wordCircle = new MyCircle(word);
             myCirclesMap.put(word, wordCircle);
+            myCircles.add(wordCircle);
             for (int i = 0; i < word.length(); i++) {
                 String wildCardString = word.substring(0, i) + "*" + word.substring(i + 1);
                 MyCircle wildCardCircle = new MyCircle(wildCardString);
@@ -59,7 +63,12 @@ public class WordsDictionary {
                 List<MyCircle> nodesForWildcard = neighbouringNodesOfWildcard.get(wildCardCircle);
                 nodesForWildcard.add(wordCircle);
             }
+
         }
         return neighbouringNodesOfWildcard;
+    }
+
+    public List<MyCircle> getMyCircles() {
+        return myCircles;
     }
 }
