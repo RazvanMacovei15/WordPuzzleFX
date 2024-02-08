@@ -45,4 +45,19 @@ public class Utils {
 
         return parameters;
     }
+
+    public void organiseGraphInConcentricCircles(double n, BorderPane borderPane){
+        //TODO
+        double centerX = borderPane.getWidth()/2;
+        double centerY = borderPane.getHeight()/2;
+
+        double numberOfCircles = Math.round(n / 4);
+
+
+//        double angle = 2 * Math.PI * i / numberOfCircles;
+//
+//        double circleX = centerX + radius * Math.cos(angle);
+//        double circleY = centerY + radius * Math.sin(angle);
+
+    }
 }
