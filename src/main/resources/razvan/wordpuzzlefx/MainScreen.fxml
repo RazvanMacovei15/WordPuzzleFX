@@ -25,13 +25,14 @@
 
     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
         <VBox>
-            <Button text="Make connections" minWidth="300" onAction="#onButtonClicked"/>
+
             <TextField promptText="Start Word" minWidth="300" fx:id="textField1"/>
             <TextField promptText="End Word" minWidth="300" fx:id="textField2"/>
-            <Button text="Shortest Path" minWidth="300"/>
+            <Button text="Shortest Path" minWidth="300" onAction="#onButtonClicked"/>
             <ComboBox fx:id="dictionaryComboBox" GridPane.rowIndex="9" minWidth="300" promptText="Dictionary">
 
             </ComboBox>
+            <Button text="RESET" onAction="#reset"/>
         </VBox>
     </GridPane>
 

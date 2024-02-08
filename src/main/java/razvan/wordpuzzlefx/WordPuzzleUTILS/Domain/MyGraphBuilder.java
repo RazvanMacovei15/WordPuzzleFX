@@ -8,14 +8,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 public class MyGraphBuilder {
 
     protected MyGraph myGraph;
+    private Set<Circle> addedCircles = new HashSet<>();
+
     protected BorderPane canvasBorderPane;
 
     public MyGraphBuilder(BorderPane canvasBorderPane) {
@@ -36,33 +36,39 @@ public class MyGraphBuilder {
         List<String> words = wordsDictionary.getWords();
         int size = words.size();
 
-        List<Double> parameters = Utils.makeGridPaneMatrix(wordsDictionary.getWords().size(), canvas);
+        List<Double> parameters = Utils.makeGridPaneMatrix(wordsDictionary.getWords().size(), canvasBorderPane);
         double rows = parameters.get(0);
         double circleX = parameters.get(1);
         double circleY = parameters.get(2);
         double squareSize = parameters.get(3);
         int nrOfCircles = 0;
         int index = 0;
+        double radius = parameters.get(4);
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < rows && nrOfCircles < size; j++) {
                 String word = words.get(index);
                 MyCircle circle = myCircleMap.get(word);
-                drawMyCircle(circleX, circleY, circle);
+                drawMyCircle(circleX, circleY, circle, radius);
                 index++;
                 circleX += squareSize;
                 nrOfCircles++;
+                System.out.print("o ");
             }
+            System.out.println();
             circleX = parameters.get(1);
             circleY += squareSize;
         }
         for (List<MyCircle> neighbouringWords : wildcardValues) {
-
             for (MyCircle word : neighbouringWords) {
                 myGraph.addNode(word.getWord());
+                System.out.print(word.getWord() + " ");
             }
+            System.out.println();
+
             for (int i = 0; i < neighbouringWords.size() - 1; i++) {
                 MyCircle a = neighbouringWords.get(i);
+
 
                 for (int j = i + 1; j < neighbouringWords.size(); j++) {
                     MyCircle b = neighbouringWords.get(j);
@@ -83,16 +89,28 @@ public class MyGraphBuilder {
         gc.strokeLine(Ax, Ay, Bx, By);
     }
 
-    private void drawMyCircle(double x, double y, MyCircle myCircle) {
+    private void drawMyCircle(double x, double y, MyCircle myCircle, double radius) {
 
-        double radius = 30;
         Circle circle = myCircle.getCircleNode();
         circle.setCenterX(x);
         circle.setCenterY(y);
         circle.setRadius(radius);
         circle.setFill(Color.GREY);
         circle.setUserData(myCircle.getWord());
-        Platform.runLater(() -> canvasBorderPane.getChildren().add(circle));
-
+        Platform.runLater(() -> {
+            try {
+                if (addedCircles.add(circle)) {
+                    canvasBorderPane.getChildren().add(circle);
+                } else {
+                    System.out.println(myCircle.getWord());
+                    // Handle the duplicate circle exception here
+                    System.out.println("Duplicate circle detected. Skipping addition.");
+                }
+            } catch (Exception e) {
+                // Handle other exceptions here
+                e.printStackTrace();
+            }
+        });
     }
+
 }

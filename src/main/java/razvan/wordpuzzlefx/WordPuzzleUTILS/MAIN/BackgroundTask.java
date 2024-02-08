@@ -21,7 +21,6 @@ public class BackgroundTask extends MyPathfinder {
         this.gc = gc;
     }
 
-
     public void drawMyCircle(MyCircle myCircle, GraphicsContext gc) {
 
     }
@@ -32,6 +31,11 @@ public class BackgroundTask extends MyPathfinder {
 
     @Override
     public void highlightNeighbours(List<MyCircle> neighbours) {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         for (MyCircle myCircle : neighbours) {
             myCircle.getCircleNode().setFill(Color.PURPLE);
         }
@@ -39,32 +43,59 @@ public class BackgroundTask extends MyPathfinder {
 
     @Override
     public void highlightNode(MyCircle node) {
-
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void highlightStartNode(MyCircle node) {
-        node.getCircleNode().setFill(Color.RED);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        node.getCircleNode().setFill(Color.DARKGRAY);
     }
 
     @Override
     public void highlightEndNode(MyCircle node) {
-
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        node.getCircleNode().setFill(Color.BLACK);
     }
 
     @Override
-    protected void highlightCurrentNode(String node) {
-
+    protected void highlightCurrentNode(MyCircle node) {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        node.getCircleNode().setFill(Color.BLACK);
     }
 
     @Override
-    protected void returnToBaseColor(String node) {
-
+    protected void returnToBaseColor(MyCircle node) {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     protected void returnNeighboursToBaseColor(List<MyCircle> neighbours) {
-
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -89,12 +120,5 @@ public class BackgroundTask extends MyPathfinder {
                 }
             }
         }).start();
-
     }
-
-    public GraphicsContext getGc() {
-        return gc;
-    }
-
-
 }

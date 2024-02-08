@@ -1,5 +1,6 @@
 package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -37,7 +38,9 @@ public class Graph<T> {
             for (String word : neighbouringWords) {
                 //iterate through the words
                 graph.addNode(word);
+                System.out.print(word);
             }
+            System.out.println();
             for (int i = 0; i < neighbouringWords.size() - 1; i++) {
                 System.out.println();
                 System.out.println();
@@ -107,5 +110,7 @@ public class Graph<T> {
         }
     }
 
-
+    public static void main(String[] args) throws IOException {
+        buildGraphFromWordsDictionary(new WordsDictionary("src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryMedium.txt"));
+    }
 }

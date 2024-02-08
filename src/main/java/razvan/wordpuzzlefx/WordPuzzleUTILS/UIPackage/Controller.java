@@ -38,6 +38,8 @@ public class Controller {
     TextField textField1;
     @FXML
     TextField textField2;
+    private File file = null;
+    private Map<String, String> dictionaryPaths=null;
 
     public void resetCircleColors(BorderPane canvasBorderPane){
         for (Node node : canvasBorderPane.getChildren()) {
@@ -56,7 +58,11 @@ public class Controller {
             BackgroundTask backgroundTask = new BackgroundTask(canvasBorderPane,canvas.getGraphicsContext2D());
             String start = textField1.getText().trim();
             String end = textField2.getText().trim();
-            backgroundTask.findShortestPath(myGraph, circles.get(start), circles.get(end), canvasBorderPane);
+
+            new Thread (() -> {
+                backgroundTask.findShortestPath(myGraph, circles.get(start), circles.get(end), canvasBorderPane);
+            }).start();
+
         }
     }
 
@@ -82,7 +88,7 @@ public class Controller {
         dictionaryComboBox.setItems(dictionaryNames);
 
         // Create a map to store dictionary names and their corresponding file paths
-        Map<String, String> dictionaryPaths = new HashMap<>();
+        dictionaryPaths = new HashMap<>();
         dictionaryPaths.put("Short", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryShort.txt"); // Replace with your actual file path
         dictionaryPaths.put("Medium", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryMedium.txt"); // Replace with your actual file path
         dictionaryPaths.put("Long", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryLong.txt"); // Replace with your actual file path
@@ -92,23 +98,13 @@ public class Controller {
         dictionaryComboBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String selectedDictionary = dictionaryComboBox.getValue();
-                if (selectedDictionary != null) {
-                    // Load the file based on the selected dictionary
-                    File file = loadDictionary(dictionaryPaths, selectedDictionary);
-                    if (file != null) {
-                        System.out.println("Loading file for dictionary " + selectedDictionary + ": " + file.getAbsolutePath());
-                        // Add your logic to handle the loaded file
-                    } else {
-                        System.out.println("No file found for dictionary: " + selectedDictionary);
-                    }
-                }
+                loadCurrentlySelectedDictionary();
             }
         });
     }
 
     public File loadDictionary(Map<String, String> dictionaryPaths, String dictionaryName) {
-        if (dictionaryName.equals("NOTORIOUS B.I.G.") || dictionaryName.equals("Long")) {
+        if (dictionaryName.equals("NOTORIOUS B.I.G.")) {
             System.out.println("Too Many Words in the dictionary! ---> WIP");
             String text = "Too Many Words in the dictionary! ---> WIP";
             Label label = new Label(text);
@@ -130,5 +126,24 @@ public class Controller {
             return new File(dictionaryPaths.get(dictionaryName));
         }
         return new File(dictionaryPaths.get(dictionaryName));
+    }
+
+    public void reset(){
+        resetCanvas();
+        loadCurrentlySelectedDictionary();
+    }
+
+    private void loadCurrentlySelectedDictionary() {
+        String selectedDictionary = dictionaryComboBox.getValue();
+        if (selectedDictionary != null) {
+            // Load the file based on the selected dictionary
+            file = loadDictionary(dictionaryPaths, selectedDictionary);
+            if (file != null) {
+                System.out.println("Loading file for dictionary " + selectedDictionary + ": " + file.getAbsolutePath());
+                // Add your logic to handle the loaded file
+            } else {
+                System.out.println("No file found for dictionary: " + selectedDictionary);
+            }
+        }
     }
 }

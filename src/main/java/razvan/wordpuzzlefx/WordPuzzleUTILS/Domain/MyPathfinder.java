@@ -13,9 +13,9 @@ public abstract class MyPathfinder {
 
     public abstract void highlightEndNode(MyCircle node);
 
-    protected abstract void highlightCurrentNode(String node);
+    protected abstract void highlightCurrentNode(MyCircle node);
 
-    protected abstract void returnToBaseColor(String node);
+    protected abstract void returnToBaseColor(MyCircle node);
 
     protected abstract void returnNeighboursToBaseColor(List<MyCircle> neighbours);
 
@@ -46,7 +46,7 @@ public abstract class MyPathfinder {
             String node = toVisitQueue.remove();
 
             //method to highlight the circle
-            highlightCurrentNode(node);
+//            highlightCurrentNode(node);
 
             //if the node is the end node, return the path
             if (node.equals(end.getWord())) {
@@ -82,15 +82,9 @@ public abstract class MyPathfinder {
                 //put the neighbour and the path in the map
                 paths.put(neighbour.getWord(), previousPath);
             }
-            returnToBaseColor(node);
+//            returnToBaseColor(node);
             returnNeighboursToBaseColor(neighbours);
         }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
 
         return Collections.emptyList();
     }
