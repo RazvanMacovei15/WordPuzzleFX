@@ -21,10 +21,6 @@ public class BackgroundTask extends MyPathfinder {
         this.gc = gc;
     }
 
-    public void drawMyCircle(MyCircle myCircle, GraphicsContext gc) {
-
-    }
-
     private void changeColor(Circle myCircle, String color) {
         myCircle.setFill(Color.valueOf(color));
     }
@@ -32,12 +28,12 @@ public class BackgroundTask extends MyPathfinder {
     @Override
     public void highlightNeighbours(List<MyCircle> neighbours) {
         try {
-            Thread.sleep(100);
+            for (MyCircle myCircle : neighbours) {
+                myCircle.getCircleNode().setFill(Color.PURPLE);
+            }
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }
-        for (MyCircle myCircle : neighbours) {
-            myCircle.getCircleNode().setFill(Color.PURPLE);
         }
     }
 
@@ -48,6 +44,13 @@ public class BackgroundTask extends MyPathfinder {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        node.getCircleNode().setFill(Color.ORANGE);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        node.getCircleNode().setFill(Color.GREY);
     }
 
     @Override
@@ -77,7 +80,7 @@ public class BackgroundTask extends MyPathfinder {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        node.getCircleNode().setFill(Color.BLACK);
+        node.getCircleNode().setFill(Color.RED);
     }
 
     @Override
@@ -87,14 +90,18 @@ public class BackgroundTask extends MyPathfinder {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        node.getCircleNode().setFill(Color.GREY);
     }
 
     @Override
     protected void returnNeighboursToBaseColor(List<MyCircle> neighbours) {
         try {
-            Thread.sleep(200);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+        for (MyCircle myCircle : neighbours) {
+            myCircle.getCircleNode().setFill(Color.GREY);
         }
     }
 

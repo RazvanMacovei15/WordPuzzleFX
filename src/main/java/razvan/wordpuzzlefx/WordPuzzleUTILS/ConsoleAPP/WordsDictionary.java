@@ -44,19 +44,19 @@ public class WordsDictionary {
         return neighbouringNodesOfWildcard;
     }
 
-    public Map<String, List<MyCircle>> getWordsGroupedByWildcard2() {
-        Map<String, List<MyCircle>> neighbouringNodesOfWildcard = new HashMap<>();
+    public Map<MyCircle, List<MyCircle>> getWordsGroupedByWildcard2() {
+        Map<MyCircle, List<MyCircle>> neighbouringNodesOfWildcard = new HashMap<>();
 
         for (String word : words) {
             MyCircle wordCircle = new MyCircle(word);
             myCirclesMap.put(word, wordCircle);
             for (int i = 0; i < word.length(); i++) {
                 String wildCardString = word.substring(0, i) + "*" + word.substring(i + 1);
-
-                if (!neighbouringNodesOfWildcard.containsKey(wildCardString)) {
-                    neighbouringNodesOfWildcard.put(wildCardString, new ArrayList<>());
+                MyCircle wildCardCircle = new MyCircle(wildCardString);
+                if (!neighbouringNodesOfWildcard.containsKey(wildCardCircle)) {
+                    neighbouringNodesOfWildcard.put(wildCardCircle, new ArrayList<>());
                 }
-                List<MyCircle> nodesForWildcard = neighbouringNodesOfWildcard.get(wildCardString);
+                List<MyCircle> nodesForWildcard = neighbouringNodesOfWildcard.get(wildCardCircle);
                 nodesForWildcard.add(wordCircle);
             }
         }

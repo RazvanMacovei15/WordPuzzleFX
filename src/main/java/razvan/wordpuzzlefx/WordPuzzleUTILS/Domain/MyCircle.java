@@ -66,4 +66,9 @@ public class MyCircle {
         MyCircle myCircle = (MyCircle) o;
         return Objects.equals(word, myCircle.word);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(word);
+    }
 }

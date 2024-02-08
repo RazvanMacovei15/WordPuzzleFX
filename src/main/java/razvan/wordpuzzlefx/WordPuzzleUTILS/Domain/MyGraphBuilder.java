@@ -25,11 +25,11 @@ public class MyGraphBuilder {
     public MyGraph buildGraphFromWordsDictionaryCircles(WordsDictionary wordsDictionary, Canvas canvas) {
         //get MyCircleMAP
         Map<String, MyCircle> myCircleMap = wordsDictionary.getMyCirclesMap();
-
-        Map<String, List<MyCircle>> nodesByWildcard = wordsDictionary.getWordsGroupedByWildcard2();
+        //get the words grouped by wildcard
+        Map<MyCircle, List<MyCircle>> nodesByWildcard = wordsDictionary.getWordsGroupedByWildcard2();
 
         myGraph = new MyGraph(nodesByWildcard);
-        Map<String, List<MyCircle>> nodesByWildcardCopy = new HashMap<>(nodesByWildcard);
+        Map<MyCircle, List<MyCircle>> nodesByWildcardCopy = new HashMap<>(nodesByWildcard);
         Collection<List<MyCircle>> wildcardValues = nodesByWildcardCopy.values();
 
         //get the parameters for the gridPane
@@ -61,7 +61,7 @@ public class MyGraphBuilder {
         }
         for (List<MyCircle> neighbouringWords : wildcardValues) {
             for (MyCircle word : neighbouringWords) {
-                myGraph.addNode(word.getWord());
+                myGraph.addNode(word);
                 System.out.print(word.getWord() + " ");
             }
             System.out.println();
@@ -72,7 +72,7 @@ public class MyGraphBuilder {
 
                 for (int j = i + 1; j < neighbouringWords.size(); j++) {
                     MyCircle b = neighbouringWords.get(j);
-                    myGraph.addEdge(a.getWord(), b.getWord());
+                    myGraph.addEdge(a, b);
 
                     Platform.runLater(() -> {
                         drawEdgeBetweenTwoPoints(a.getCircleNode().getCenterX(), a.getCircleNode().getCenterY(), b.getCircleNode().getCenterX(), b.getCircleNode().getCenterY(), canvas.getGraphicsContext2D());

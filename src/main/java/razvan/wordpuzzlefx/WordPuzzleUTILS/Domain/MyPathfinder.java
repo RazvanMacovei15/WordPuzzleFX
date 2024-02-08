@@ -29,27 +29,27 @@ public abstract class MyPathfinder {
         highlightStartNode(start);
         highlightEndNode(end);
         //queue with nodes to visit
-        Queue<String> toVisitQueue = new LinkedList<>();
+        Queue<MyCircle> toVisitQueue = new LinkedList<>();
         //set with visited nodes
-        Set<String> visitedNodes = new HashSet<>();
+        Set<MyCircle> visitedNodes = new HashSet<>();
         //map with paths
-        Map<String, List<MyCircle>> paths = new HashMap<>();
+        Map<MyCircle, List<MyCircle>> paths = new HashMap<>();
         //start the shortest path search
-        paths.put(start.getWord(), List.of(start));
+        paths.put(start, List.of(start));
         //initialize the queue
-        toVisitQueue.add(start.getWord());
+        toVisitQueue.add(start);
         //initialize the set
-        visitedNodes.add(start.getWord());
+        visitedNodes.add(start);
         while (!toVisitQueue.isEmpty()) {
 
             //remove the first element from the queue
-            String node = toVisitQueue.remove();
+            MyCircle node = toVisitQueue.remove();
 
             //method to highlight the circle
-//            highlightCurrentNode(node);
+            highlightCurrentNode(node);
 
             //if the node is the end node, return the path
-            if (node.equals(end.getWord())) {
+            if (node.equals(end)) {
 
                 highlightPath(paths.get(node), canvasBorderPane);
 
@@ -64,12 +64,12 @@ public abstract class MyPathfinder {
 
             for (MyCircle neighbour : neighbours) {
                 //if the neighbour is already visited, continue
-                if (visitedNodes.contains(neighbour.getWord())) {
+                if (visitedNodes.contains(neighbour)) {
                     continue;
                 }
                 //add the neighbour to the visited nodes set and to the queue
-                visitedNodes.add(neighbour.getWord());
-                toVisitQueue.add(neighbour.getWord());
+                visitedNodes.add(neighbour);
+                toVisitQueue.add(neighbour);
 
                 //method to highlight the circle in a yellow border and then go back to normal
                 highlightNode(neighbour);
@@ -80,9 +80,9 @@ public abstract class MyPathfinder {
                 //add the neighbour to the path
                 previousPath.add(neighbour);
                 //put the neighbour and the path in the map
-                paths.put(neighbour.getWord(), previousPath);
+                paths.put(neighbour, previousPath);
             }
-//            returnToBaseColor(node);
+            returnToBaseColor(node);
             returnNeighboursToBaseColor(neighbours);
         }
 

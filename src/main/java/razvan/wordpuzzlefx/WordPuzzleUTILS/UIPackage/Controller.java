@@ -119,6 +119,8 @@ public class Controller {
                 throw new RuntimeException(e);
             }
 
+
+
             myGraph = new MyGraph(dictionary.getWordsGroupedByWildcard2());
 
             myGraph = myGraphBuilder.buildGraphFromWordsDictionaryCircles(dictionary, canvas);
