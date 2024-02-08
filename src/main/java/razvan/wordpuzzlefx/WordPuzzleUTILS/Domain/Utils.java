@@ -49,8 +49,18 @@ public class Utils {
         return parameters;
     }
 
-    public static void organiseGraphInConcentricCircles(List<MyCircle> circleList, BorderPane borderPane) {
+    //fastest path instead of shortest path
+    public static void showFastestPath(List<MyCircle> path, Canvas canvas) {
         //TODO
+    }
+    //show small canvas where the currently shortest path is displayed
+    public static void showShortestPath(List<MyCircle> path, Canvas canvas) {
+        //TODO
+    }
+
+
+
+    public static void organiseGraphInConcentricCircles(List<MyCircle> circleList, BorderPane borderPane) {
         double centerX = borderPane.getWidth() / 2;
         double centerY = borderPane.getHeight() / 2;
         int size = circleList.size();
@@ -71,7 +81,7 @@ public class Utils {
         }
         double radiusFromCenter = borderPane.getWidth() / (2 * (numberOfConcentricCircles + 2));
         double baseRadius = radiusFromCenter;
-        double circleRadius = baseRadius/4;
+        double circleRadius = baseRadius/3;
         int index = 0;
 
         double angle = 0;

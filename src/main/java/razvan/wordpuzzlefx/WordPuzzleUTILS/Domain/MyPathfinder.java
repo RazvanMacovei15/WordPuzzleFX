@@ -1,6 +1,8 @@
 package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Paint;
 
 import java.util.*;
 
@@ -15,19 +17,19 @@ public abstract class MyPathfinder {
 
     protected abstract void highlightCurrentNode(MyCircle node);
 
-    protected abstract void returnToBaseColor(MyCircle node);
+    protected abstract void returnToBaseColor(MyCircle node, Paint color);
 
     protected abstract void returnNeighboursToBaseColor(List<MyCircle> neighbours);
 
-    protected abstract void highlightPath(List<MyCircle> path, BorderPane canvasBorderPane);
+    protected abstract void highlightPath(List<MyCircle> path, GraphicsContext gc, Set<MyCircle> pathSet, BorderPane canvasBorderPane);
 
-    public List<MyCircle> findShortestPath(MyGraph myGraph, MyCircle start, MyCircle end, BorderPane canvasBorderPane) {
-
-
-        System.out.println("start thread");
+    public List<MyCircle> findShortestPath(MyGraph myGraph, MyCircle start, MyCircle end, GraphicsContext gc, BorderPane canvasBorderPane) {
         //draw start and end circles
         highlightStartNode(start);
+        Paint startColor = start.getCircleNode().getFill();
         highlightEndNode(end);
+        Paint endColor = end.getCircleNode().getFill();
+
         //queue with nodes to visit
         Queue<MyCircle> toVisitQueue = new LinkedList<>();
         //set with visited nodes
@@ -44,20 +46,16 @@ public abstract class MyPathfinder {
 
             //remove the first element from the queue
             MyCircle node = toVisitQueue.remove();
+            Paint nodeColor = node.getCircleNode().getFill();
 
             //method to highlight the circle
             highlightCurrentNode(node);
 
             //if the node is the end node, return the path
             if (node.equals(end)) {
+                Set<MyCircle> pathSet = new HashSet<>(paths.get(node));
+                highlightPath(paths.get(node), gc, pathSet, canvasBorderPane);
 
-                System.out.println("found path " + paths.get(node));
-
-                for(MyCircle myCircle: paths.get(node)){
-                    System.out.print(myCircle.getWord() + "+");
-                }
-
-                highlightPath(paths.get(node), canvasBorderPane);
 
                 return paths.get(node);
             }
@@ -78,6 +76,7 @@ public abstract class MyPathfinder {
                 //method to highlight the circle in a yellow border and then go back to normal
                 highlightNode(neighbour);
 
+
                 //add the neighbour to the path
                 List<MyCircle> previousPath = new ArrayList<>(paths.get(node));
 
@@ -86,7 +85,12 @@ public abstract class MyPathfinder {
                 //put the neighbour and the path in the map
                 paths.put(neighbour, previousPath);
             }
-            returnToBaseColor(node);
+            if(node.equals(start)){
+                returnToBaseColor(node, startColor);
+            }
+            else{
+                returnToBaseColor(node, nodeColor);
+            }
             returnNeighboursToBaseColor(neighbours);
         }
 

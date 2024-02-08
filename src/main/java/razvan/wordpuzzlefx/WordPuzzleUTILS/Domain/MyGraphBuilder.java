@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
 
@@ -60,7 +61,7 @@ public class MyGraphBuilder {
                     myGraph.addEdge(a, b);
 
                     Platform.runLater(() -> {
-                        drawEdgeBetweenTwoPoints(a.getCircleNode().getCenterX(), a.getCircleNode().getCenterY(), b.getCircleNode().getCenterX(), b.getCircleNode().getCenterY(), canvas.getGraphicsContext2D());
+                        drawEdgeBetweenTwoPoints(a.getCircleNode().getCenterX(), a.getCircleNode().getCenterY(), b.getCircleNode().getCenterX(), b.getCircleNode().getCenterY(), canvas.getGraphicsContext2D(), Color.GREY);
                     });
                 }
             }
@@ -68,8 +69,8 @@ public class MyGraphBuilder {
         return myGraph;
     }
 
-    private void drawEdgeBetweenTwoPoints(double Ax, double Ay, double Bx, double By, GraphicsContext gc) {
-        gc.setStroke(Color.DARKGRAY);
+    public static void drawEdgeBetweenTwoPoints(double Ax, double Ay, double Bx, double By, GraphicsContext gc, Paint color) {
+        gc.setStroke(color);
         gc.setLineWidth(1);
         gc.strokeLine(Ax, Ay, Bx, By);
     }

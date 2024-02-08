@@ -57,10 +57,11 @@ public class Controller {
             new Thread (() -> {
                 Map<String, MyCircle> circles = dictionary.getMyCirclesMap();
                 resetCircleColors(circles);
+                GraphicsContext gc = canvas.getGraphicsContext2D();
                 BackgroundTask backgroundTask = new BackgroundTask(canvasBorderPane,canvas.getGraphicsContext2D());
                 String start = textField1.getText().trim();
                 String end = textField2.getText().trim();
-                backgroundTask.findShortestPath(myGraph, circles.get(start), circles.get(end), canvasBorderPane);
+                backgroundTask.findShortestPath(myGraph, circles.get(start), circles.get(end), gc, canvasBorderPane);
             }).start();
 
         }
