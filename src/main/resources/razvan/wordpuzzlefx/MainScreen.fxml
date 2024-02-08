@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import org.controlsfx.control.CheckComboBox?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="razvan.wordpuzzlefx.WordPuzzleUTILS.UIPackage.Controller">
+
+    <columnConstraints>
+        <ColumnConstraints percentWidth="70"/>
+        <ColumnConstraints percentWidth="30"/>
+    </columnConstraints>
+
+    <BorderPane fx:id="canvasBorderPane"
+                GridPane.rowIndex="0"
+                GridPane.columnIndex="0">
+
+    </BorderPane>
+
+    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <VBox>
+            <Button text="Make connections" minWidth="300" onAction="#onButtonClicked"/>
+            <TextField promptText="Start Word" minWidth="300" fx:id="textField1"/>
+            <TextField promptText="End Word" minWidth="300" fx:id="textField2"/>
+            <Button text="Shortest Path" minWidth="300"/>
+            <ComboBox fx:id="dictionaryComboBox" GridPane.rowIndex="9" minWidth="300" promptText="Dictionary">
+
+            </ComboBox>
+        </VBox>
+    </GridPane>
+
+</GridPane>
