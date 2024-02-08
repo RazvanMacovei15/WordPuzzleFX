@@ -1,4 +1,9 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS;
+package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
+
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.Graph;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.PathFinder;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.PlayMode;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
 
 import java.io.IOException;
 import java.util.List;

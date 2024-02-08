@@ -12,20 +12,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.*;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Graph;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.MAIN.BackgroundTask;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.WordsDictionary;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
 
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 

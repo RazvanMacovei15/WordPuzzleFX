@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.WordsDictionary;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
 
 import java.util.Collection;
 import java.util.HashMap;

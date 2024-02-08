@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS;
+package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
 import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyCircle;
 

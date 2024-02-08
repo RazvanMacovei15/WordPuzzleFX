@@ -1,11 +1,6 @@
 package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
 
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Graph;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.WordsDictionary;
-
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Queue;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.Graph;
 
 public class MyCircleRepo {
     protected Graph<String> graph;

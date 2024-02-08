@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS;
+package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
 import java.util.*;
 

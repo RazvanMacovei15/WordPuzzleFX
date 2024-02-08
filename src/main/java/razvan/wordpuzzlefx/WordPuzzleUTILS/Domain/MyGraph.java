@@ -1,14 +1,5 @@
 package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
 
-import javafx.application.Platform;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Graph;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.WordsDictionary;
-
 import java.util.*;
 
 public class MyGraph {

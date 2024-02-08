@@ -1,9 +1,8 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS;
+package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 

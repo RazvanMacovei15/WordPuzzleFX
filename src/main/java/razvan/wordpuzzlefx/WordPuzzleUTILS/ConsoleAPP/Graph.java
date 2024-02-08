@@ -1,6 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS;
-
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyCircle;
+package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
 import java.util.Collection;
 import java.util.HashMap;
