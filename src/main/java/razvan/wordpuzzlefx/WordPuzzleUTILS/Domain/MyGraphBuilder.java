@@ -7,9 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
 
-import java.io.IOException;
 import java.util.*;
 
 public class MyGraphBuilder {
@@ -48,7 +46,7 @@ public class MyGraphBuilder {
         for (List<MyCircle> neighbouringWords : wildcardValues) {
             for (MyCircle word : neighbouringWords) {
                 myGraph.addNode(word);
-                System.out.print(word.getWord() + " ");
+
             }
             System.out.println();
 

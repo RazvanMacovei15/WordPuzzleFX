@@ -19,6 +19,7 @@ import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyCircle;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyPathfinder;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 
 import static razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyGraphBuilder.drawEdgeBetweenTwoPoints;
@@ -51,6 +52,28 @@ public class BackgroundTask extends MyPathfinder {
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+
+    @Override
+    public void highlightToVisitNodes(Queue<MyCircle> toVisitQueue) {
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> highlightQueue(toVisitQueue))
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+    }
+
+    public void highlightQueue(Queue<MyCircle> toVisitQueue) {
+        for (MyCircle myCircle : toVisitQueue) {
+            myCircle.getCircleNode().setStroke(Color.YELLOW);
+        }
+    }
+    @Override
+    public void revertToVisitNodes(Queue<MyCircle> toVisitQueue) {
+        for (MyCircle myCircle : toVisitQueue) {
+            myCircle.getCircleNode().setStroke(Color.GREY);
+        }
     }
 
     private void checkSetAndUpdateLabel(Set<MyCircle> visitedNodes) {
@@ -130,7 +153,7 @@ public class BackgroundTask extends MyPathfinder {
         MyCircle start = path.getFirst();
         double radius = start.getCircleNode().getRadius();
         int number = (int) (radius);
-        System.out.println(number);
+
         MyCircle end = path.getLast();
         //TODO implement a more elegant solution for this
         for (int i = 0; i < path.size() + 1; i++) {

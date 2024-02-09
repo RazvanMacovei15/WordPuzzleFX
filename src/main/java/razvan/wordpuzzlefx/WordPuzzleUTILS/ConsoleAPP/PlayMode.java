@@ -1,5 +1,7 @@
 package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
+import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.WordsDictionary;
+
 import java.util.*;
 
 public abstract class PlayMode {

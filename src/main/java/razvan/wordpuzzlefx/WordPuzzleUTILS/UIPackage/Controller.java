@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ComboBox;
@@ -15,10 +14,9 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.*;
 import razvan.wordpuzzlefx.WordPuzzleUTILS.MAIN.BackgroundTask;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP.WordsDictionary;
+import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.WordsDictionary;
 
 
 import java.io.File;
@@ -147,7 +145,7 @@ public class Controller {
             // Load the file based on the selected dictionary
             file = loadDictionary(dictionaryPaths, selectedDictionary);
             if (file != null) {
-                System.out.println("Loading file for dictionary " + selectedDictionary + ": " + file.getAbsolutePath());
+
                 // Add your logic to handle the loaded file
             } else {
                 System.out.println("No file found for dictionary: " + selectedDictionary);

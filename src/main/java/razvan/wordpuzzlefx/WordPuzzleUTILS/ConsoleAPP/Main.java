@@ -1,5 +1,7 @@
 package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
 
+import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.WordsDictionary;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.InputMismatchException;

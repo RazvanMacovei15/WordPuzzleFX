@@ -47,6 +47,7 @@ public abstract class MyPathfinder {
         start.setVisited(true);
 
         checkVisitedNodes(visitedNodes);
+        highlightToVisitNodes(toVisitQueue);
         while (!toVisitQueue.isEmpty()) {
 
             //remove the first element from the queue
@@ -91,7 +92,9 @@ public abstract class MyPathfinder {
                 previousPath.add(neighbour);
                 //put the neighbour and the path in the map
                 paths.put(neighbour, previousPath);
+                highlightToVisitNodes(toVisitQueue);
             }
+            revertToVisitNodes(toVisitQueue);
             if(node.equals(start)){
                 returnToBaseColor(node, startColor);
             }
@@ -103,4 +106,7 @@ public abstract class MyPathfinder {
 
         return Collections.emptyList();
     }
+
+    public abstract void highlightToVisitNodes(Queue<MyCircle> toVisitQueue);
+    public abstract void revertToVisitNodes(Queue<MyCircle> toVisitQueue);
 }
