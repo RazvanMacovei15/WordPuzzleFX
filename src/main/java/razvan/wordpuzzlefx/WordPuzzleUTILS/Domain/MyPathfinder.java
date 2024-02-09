@@ -23,6 +23,8 @@ public abstract class MyPathfinder {
 
     protected abstract void highlightPath(List<MyCircle> path, GraphicsContext gc, Set<MyCircle> pathSet, BorderPane canvasBorderPane);
 
+    protected abstract void checkVisitedNodes(Set<MyCircle> visitedNodes);
+
     public List<MyCircle> findShortestPath(MyGraph myGraph, MyCircle start, MyCircle end, GraphicsContext gc, BorderPane canvasBorderPane) {
         //draw start and end circles
         highlightStartNode(start);
@@ -42,6 +44,9 @@ public abstract class MyPathfinder {
         toVisitQueue.add(start);
         //initialize the set
         visitedNodes.add(start);
+        start.setVisited(true);
+
+        checkVisitedNodes(visitedNodes);
         while (!toVisitQueue.isEmpty()) {
 
             //remove the first element from the queue
@@ -71,7 +76,9 @@ public abstract class MyPathfinder {
                 }
                 //add the neighbour to the visited nodes set and to the queue
                 visitedNodes.add(neighbour);
+                neighbour.setVisited(true);
                 toVisitQueue.add(neighbour);
+
 
                 //method to highlight the circle in a yellow border and then go back to normal
                 highlightNode(neighbour);

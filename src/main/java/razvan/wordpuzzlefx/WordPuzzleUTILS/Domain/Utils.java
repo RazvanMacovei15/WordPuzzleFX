@@ -4,6 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,22 +67,22 @@ public class Utils {
         int size = circleList.size();
         System.out.println("size: " + size);
 
-
-
         double numberOfConcentricCircles = (double) size/ 4;
         System.out.println("number of concentric circles: " + numberOfConcentricCircles);
 
-        double remainder = numberOfConcentricCircles / 10;
+        double floor = Math.floor(numberOfConcentricCircles);
+        double remainder = numberOfConcentricCircles - floor;
         System.out.println(remainder);
         if (remainder != 0) {
-            if (remainder > 0.5) {
-                numberOfConcentricCircles = Math.round(numberOfConcentricCircles) + 1;
+            if (remainder >= 0.5) {
+                numberOfConcentricCircles = floor + 1;
                 System.out.println(numberOfConcentricCircles);
             }
         }
-        double radiusFromCenter = borderPane.getWidth() / (2 * (numberOfConcentricCircles + 2));
+
+        double radiusFromCenter = (borderPane.getWidth() / (2 * (numberOfConcentricCircles + 1)));
         double baseRadius = radiusFromCenter;
-        double circleRadius = baseRadius/3;
+        double circleRadius = baseRadius/3.5;
         int index = 0;
 
         double angle = 0;
@@ -104,9 +105,8 @@ public class Utils {
                 circle.setFill(Color.GREY);
                 circle.setStroke(Color.BLACK);
                 borderPane.getChildren().add(circle);
-                circle.setUserData(circleList.get(index).getWord());
 
-                System.out.println("circle " + circle.getUserData() + " " + circle.getCenterX() + " " + circle.getCenterY());
+                circle.setUserData(circleList.get(index).getWord());
 
                 circle.setOnMouseClicked(event -> {
                     System.out.println("clicked on " + circle.getUserData());
