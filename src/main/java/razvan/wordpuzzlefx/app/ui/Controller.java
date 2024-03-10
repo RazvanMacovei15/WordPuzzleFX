@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.UIPackage;
+package razvan.wordpuzzlefx.app.ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,16 +14,14 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.*;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.MAIN.BackgroundTask;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.WordsDictionary;
-
+import razvan.wordpuzzlefx.app.domain.*;
+import razvan.wordpuzzlefx.app.main.BackgroundTask;
+import razvan.wordpuzzlefx.app.domain.WordsDictionary;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class Controller {
     @FXML
@@ -40,7 +38,6 @@ public class Controller {
     TextField textField2;
     private File file = null;
     private Map<String, String> dictionaryPaths=null;
-
 
     public void resetCircleColors(Map<String, MyCircle> map){
         for (Map.Entry<String, MyCircle> entry : map.entrySet()) {
@@ -97,10 +94,10 @@ public class Controller {
 
         // Create a map to store dictionary names and their corresponding file paths
         dictionaryPaths = new HashMap<>();
-        dictionaryPaths.put("Short", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryShort.txt"); // Replace with your actual file path
-        dictionaryPaths.put("Medium", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryMedium.txt"); // Replace with your actual file path
-        dictionaryPaths.put("Long", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryLong.txt"); // Replace with your actual file path
-        dictionaryPaths.put("NOTORIOUS B.I.G.", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/BIGDICKTIONARY.txt"); // Replace with your actual file path
+        dictionaryPaths.put("Short", "src/main/java/razvan/wordpuzzlefx/app/dictionaryShort.txt"); // Replace with your actual file path
+        dictionaryPaths.put("Medium", "src/main/java/razvan/wordpuzzlefx/app/dictionaryMedium.txt"); // Replace with your actual file path
+        dictionaryPaths.put("Long", "src/main/java/razvan/wordpuzzlefx/app/dictionaryLong.txt"); // Replace with your actual file path
+        dictionaryPaths.put("NOTORIOUS B.I.G.", "src/main/java/razvan/wordpuzzlefx/app/BIG_Dictionary.txt"); // Replace with your actual file path
 
         //addEvent handler
         dictionaryComboBox.setOnAction(new EventHandler<ActionEvent>() {

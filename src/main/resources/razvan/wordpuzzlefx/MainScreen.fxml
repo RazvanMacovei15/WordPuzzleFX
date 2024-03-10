@@ -10,7 +10,7 @@
 <?import org.controlsfx.control.CheckComboBox?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="razvan.wordpuzzlefx.WordPuzzleUTILS.UIPackage.Controller">
+          fx:controller="razvan.wordpuzzlefx.app.ui.Controller">
 
     <columnConstraints>
         <ColumnConstraints percentWidth="70"/>

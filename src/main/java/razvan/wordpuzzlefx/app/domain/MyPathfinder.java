@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
+package razvan.wordpuzzlefx.app.domain;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;

@@ -1,12 +1,10 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.MAIN;
+package razvan.wordpuzzlefx.app.main;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -15,14 +13,14 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyCircle;
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyPathfinder;
+import razvan.wordpuzzlefx.app.domain.MyCircle;
+import razvan.wordpuzzlefx.app.domain.MyPathfinder;
 
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-import static razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyGraphBuilder.drawEdgeBetweenTwoPoints;
+import static razvan.wordpuzzlefx.app.domain.MyGraphBuilder.drawEdgeBetweenTwoPoints;
 
 public class BackgroundTask extends MyPathfinder {
     BorderPane canvasBorderPane;

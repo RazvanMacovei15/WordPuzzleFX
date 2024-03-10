@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
+package razvan.wordpuzzlefx.app.domain;
 
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;

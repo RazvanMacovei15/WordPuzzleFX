@@ -1,14 +1,11 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
+package razvan.wordpuzzlefx.app.domain;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Utils {
 

@@ -1,6 +1,6 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
+package razvan.wordpuzzlefx.app.console;
 
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.WordsDictionary;
+import razvan.wordpuzzlefx.app.domain.WordsDictionary;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -22,7 +22,7 @@ public class ManualMode extends PlayMode{
     double  runtimeOfApp;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
     Date obj;
-    WordsDictionary dictionary = new WordsDictionary("src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/BIGDICKTIONARY.txt");
+    WordsDictionary dictionary = new WordsDictionary("src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/BIG_Dictionary.txt");
     List<String> list = dictionary.getWords();
     PathFinder<String> pathFinder;
     public ManualMode(WordsDictionary wordsDictionary, Graph<String> graph, Scanner scanner) throws IOException {

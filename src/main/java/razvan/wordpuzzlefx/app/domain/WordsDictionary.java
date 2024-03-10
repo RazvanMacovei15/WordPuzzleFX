@@ -1,6 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
-
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.MyCircle;
+package razvan.wordpuzzlefx.app.domain;
 
 import java.io.IOException;
 import java.nio.file.Files;

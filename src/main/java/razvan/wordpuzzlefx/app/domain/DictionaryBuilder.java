@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.Domain;
+package razvan.wordpuzzlefx.app.domain;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,7 +11,7 @@ import java.util.List;
 public class DictionaryBuilder {
 
     public static void main(String[] args) {
-        extractAndWriteFourLetterWords("src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/BIGDICKTIONARY.txt", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryMedium.txt");
+        extractAndWriteFourLetterWords("src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/BIG_Dictionary.txt", "src/main/java/razvan/wordpuzzlefx/WordPuzzleUTILS/dictionaryMedium.txt");
     }
 
     public static void extractAndWriteFourLetterWords(String inputFileName, String outputFileName) {

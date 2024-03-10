@@ -1,6 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
-
-import java.util.List;
+package razvan.wordpuzzlefx.app.console;
 
 public class Constants {
     int numHints = 3;

@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.MAIN;
+package razvan.wordpuzzlefx.app.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

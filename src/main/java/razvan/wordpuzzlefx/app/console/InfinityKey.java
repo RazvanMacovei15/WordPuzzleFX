@@ -1,4 +1,4 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
+package razvan.wordpuzzlefx.app.console;
 
 public class InfinityKey {
     private static int counter = 0;

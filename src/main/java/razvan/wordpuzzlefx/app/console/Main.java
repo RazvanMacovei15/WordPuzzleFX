@@ -1,6 +1,6 @@
-package razvan.wordpuzzlefx.WordPuzzleUTILS.ConsoleAPP;
+package razvan.wordpuzzlefx.app.console;
 
-import razvan.wordpuzzlefx.WordPuzzleUTILS.Domain.WordsDictionary;
+import razvan.wordpuzzlefx.app.domain.WordsDictionary;
 
 import java.io.IOException;
 import java.util.HashMap;
